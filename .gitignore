@@ -6,8 +6,17 @@ dist/
 build/
 .pub/
 .packages
-.vscode/
 .idea/
 *.iml
 .DS_Store
 Thumbs.db
+
+# AI tooling (keep private)
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.opencode/
+.cursor/
+.windsurf/
+copilot/
+docs/

@@ -1,0 +1,51 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend (Debug)",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": ["run", "dev"],
+      "runtimeExecutable": "npm",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/backend",
+      "skipFiles": ["<node_internals>/**"],
+      "outFiles": ["${workspaceFolder}/backend/dist/**/*.js"]
+    },
+    {
+      "name": "Flutter (Web)",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/frontend/lib/main.dart",
+      "flutterMode": "debug",
+      "deviceId": "web"
+    },
+    {
+      "name": "Flutter (Emulator)",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/frontend/lib/main.dart",
+      "flutterMode": "debug"
+    },
+    {
+      "name": "Launch Full Stack",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": ["run", "dev"],
+      "runtimeExecutable": "npm",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/backend",
+      "presentation": {
+        "group": "fullstack",
+        "order": 1
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch Full Stack",
+      "configurations": ["Backend (Debug)", "Flutter (Web)"],
+      "stopAll": true
+    }
+  ]
+}
