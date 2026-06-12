@@ -1,0 +1,14 @@
+# Flutter
+build/
+.dart_tool/
+.packages
+.pub/
+*.iml
+*.lock
+.idea/
+.vscode/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

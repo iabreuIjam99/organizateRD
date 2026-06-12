@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserType {
+  INDIVIDUAL
+  PYME
+}
+
+enum BudgetPeriod {
+  MONTHLY
+  ANNUAL
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  rncCedula    String    @map("rnc_cedula")
+  userType     UserType  @map("user_type")
+  name         String?
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  budgets      Budget[]
+  transactions Transaction[]
+
+  @@map("users")
+}
+
+model Budget {
+  id        String       @id @default(uuid())
+  userId    String       @map("user_id")
+  amount    Float
+  category  String
+  period    BudgetPeriod
+  createdAt DateTime     @default(now()) @map("created_at")
+  updatedAt DateTime     @updatedAt @map("updated_at")
+
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("budgets")
+}
+
+model Transaction {
+  id          String          @id @default(uuid())
+  userId      String          @map("user_id")
+  amount      Float
+  type        TransactionType
+  category    String
+  description String?
+  ncf         String?         @map("ncf")
+  date        DateTime        @default(now())
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @updatedAt @map("updated_at")
+
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("transactions")
+}
