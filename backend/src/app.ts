@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import authRoutes from "./routes/auth.routes";
+import { errorMiddleware } from "./middlewares/error.middleware";
 
 dotenv.config();
 
@@ -17,6 +19,10 @@ app.get("/api/health", (_req, res) => {
     service: "organizaterd-backend",
   });
 });
+
+app.use("/api/auth", authRoutes);
+
+app.use(errorMiddleware);
 
 app.listen(PORT, () => {
   console.log(`[organizaterd] Server running on port ${PORT}`);
