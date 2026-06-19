@@ -1,5 +1,6 @@
 import "package:dio/dio.dart";
 import "../constants/constants.dart";
+import "auth_interceptor.dart";
 
 class ApiClient {
   late final Dio _dio;
@@ -12,6 +13,7 @@ class ApiClient {
       headers: {"Content-Type": "application/json"},
     ));
 
+    _dio.interceptors.add(AuthInterceptor());
     _dio.interceptors.add(LogInterceptor(
       requestBody: true,
       responseBody: true,
