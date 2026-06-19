@@ -1,0 +1,376 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Perfil - OrganizateRD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "tertiary": "#3cd7ff",
+                        "on-tertiary-container": "#008eab",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#00693f",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "surface-dim": "#131313",
+                        "primary": "#b9c7e4",
+                        "surface-tint": "#b9c7e4",
+                        "on-secondary": "#00391f",
+                        "inverse-primary": "#515f78",
+                        "tertiary-container": "#001c24",
+                        "error": "#ffb4ab",
+                        "surface-container": "#201f1f",
+                        "tertiary-fixed": "#b4ebff",
+                        "on-secondary-fixed-variant": "#005230",
+                        "on-primary-fixed": "#0d1c32",
+                        "on-primary-container": "#74829d",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary-fixed-variant": "#004e5f",
+                        "tertiary-fixed-dim": "#3cd7ff",
+                        "on-error": "#690005",
+                        "outline": "#8f9097",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-fixed-dim": "#00e38d",
+                        "on-background": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#39475f",
+                        "primary-container": "#0a192f",
+                        "on-surface-variant": "#c5c6cd",
+                        "background": "#131313",
+                        "on-tertiary-fixed": "#001f27",
+                        "outline-variant": "#44474d",
+                        "surface-container-highest": "#353534",
+                        "secondary": "#c1ffd5",
+                        "on-surface": "#e5e2e1",
+                        "primary-fixed": "#d6e3ff",
+                        "secondary-fixed": "#55ffa9",
+                        "inverse-on-surface": "#313030",
+                        "on-primary": "#233148",
+                        "surface-bright": "#393939",
+                        "surface-variant": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-container": "#05f297",
+                        "on-tertiary": "#003642",
+                        "on-secondary-fixed": "#002110"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "margin-desktop": "64px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "md": "24px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Poppins"],
+                        "headline-lg": ["Poppins"],
+                        "display-lg": ["Poppins"],
+                        "numeric-data": ["Inter"],
+                        "headline-md": ["Poppins"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "numeric-data": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        /* Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #55ffa9;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #05f297;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen pb-xl md:pb-0 flex flex-col md:flex-row">
+<!-- TopAppBar (Mobile & Web Header equivalent) -->
+<header class="fixed w-full z-40 bg-surface/80 backdrop-blur-md dark:bg-surface-dim/80 shadow-sm border-b border-outline-variant/10 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base top-0 hidden md:flex">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a confident executive against a neutral studio background. The lighting is soft and flattering, creating a polished corporate look. The subject is wearing a tailored dark suit, exuding trust and authority. The overall aesthetic is sharp, modern, and high-quality, fitting for a premium financial platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDumYDo3oQeXzVlVnLgwdDsN7uE0u39wKsFupWKknycYkTxSfWk6GwLIgUElvOkNJ_I2ZOhQvfWv9ZzxxOjrNg54woA4j3Vike05F3jfKGh1NPuWDdm7LMCkIBSvZWl2QMiSIcg8UOFlaM5xxhdLY3de36j1UWJ3VN14Yq6wjpLxU1r8NeMZImLJ-30pQBzMUbkUFOO1Mk1H_nbuUefn726NfYtNJTXcK1IN7idKBIlUGkS_6f4hBAmvolZFvCibJPly6KKvwAp-v8">
+</div>
+<span class="font-headline-md text-headline-md font-bold text-on-surface dark:text-on-surface">OrganizateRD</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</header>
+<!-- NavigationDrawer (Desktop SideNav) -->
+<nav class="hidden md:flex flex-col h-screen w-80 rounded-r-xl shadow-xl bg-surface dark:bg-surface-dim bg-surface-container-low dark:bg-surface-container-lowest py-md px-sm fixed left-0 top-0 z-30 pt-24 border-r border-white/5">
+<div class="mb-lg px-sm">
+<h2 class="font-display-lg text-display-lg text-primary dark:text-primary-fixed-dim mb-4">OrganizateRD</h2>
+</div>
+<div class="flex-1 overflow-y-auto space-y-2">
+<!-- Inactive -->
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/10 rounded-lg mx-2 hover:bg-tertiary/10 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                Dashboard
+            </a>
+<!-- Inactive -->
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/10 rounded-lg mx-2 hover:bg-tertiary/10 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">qr_code_scanner</span>
+                NCF History
+            </a>
+<!-- Inactive -->
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/10 rounded-lg mx-2 hover:bg-tertiary/10 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+                Tax Calendar
+            </a>
+<!-- Inactive -->
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/10 rounded-lg mx-2 hover:bg-tertiary/10 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">analytics</span>
+                Reports
+            </a>
+<!-- Active (Settings roughly maps to Profile/Config) -->
+<a class="flex items-center gap-sm px-4 py-3 bg-primary-container text-on-primary-container dark:bg-primary-fixed-variant dark:text-on-primary-fixed rounded-lg mx-2 hover:bg-tertiary/10 transition-colors font-body-md text-body-md scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+                Settings
+            </a>
+</div>
+<div class="mt-auto pt-md border-t border-white/5 flex items-center gap-sm px-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img alt="Executive Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a confident executive against a neutral studio background. The lighting is soft and flattering, creating a polished corporate look. The subject is wearing a tailored dark suit, exuding trust and authority. The overall aesthetic is sharp, modern, and high-quality, fitting for a premium financial platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbJJPzIz2JaNZmkX_YTt1pqZiZMzEABZpmZ4wLKx7Rf4B0urZakTz90MtNf4-a7Brkr6XgX3NU9_9pg_GAWgLaxmj2HfXIj95If9G-wYv0wARaCbe2mtHmh5BOtw-FInk5iyTka4fsPYRsrJnj2qtphizGI1lBzOcnncOqQ8N5UGD_vJByYot2amxJ6WNEZxT5-A1-5aUs3bzcQfBHdt1dFs67opRIDEya0k4Oniu-ebFjr-JbdRghdT7LIYewOO2oDkuARSFyKwI">
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-[16px] leading-[24px] font-medium text-tertiary dark:text-tertiary-fixed-dim">Dominican Professional</span>
+<span class="font-body-md text-[12px] leading-[16px] text-on-surface-variant">SME Owner</span>
+<span class="font-label-md text-[10px] leading-[14px] text-secondary mt-1">Premium Account</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:ml-80 pt-md pb-xl md:py-margin-desktop px-margin-mobile md:px-margin-desktop min-h-screen">
+<!-- Mobile Header (Visible only on mobile to replace TopAppBar if needed, but keeping it simple per instructions) -->
+<div class="md:hidden flex justify-between items-center mb-lg">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Profile</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</div>
+<!-- Desktop Title -->
+<div class="hidden md:block mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Profile &amp; Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Manage your SME preferences and security.</p>
+</div>
+<div class="max-w-4xl mx-auto space-y-md">
+<!-- Bento Box: Profile Header -->
+<div class="glass-panel rounded-xl p-md flex flex-col md:flex-row items-center md:items-start gap-lg relative overflow-hidden">
+<!-- Abstract background accent -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-tertiary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-surface-container-high overflow-hidden shrink-0 border-2 border-secondary-container relative z-10">
+<img alt="User Profile Large" class="w-full h-full object-cover" data-alt="A professional headshot of a confident executive against a neutral studio background. The lighting is soft and flattering, creating a polished corporate look. The subject is wearing a tailored dark suit, exuding trust and authority. The overall aesthetic is sharp, modern, and high-quality, fitting for a premium financial platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWYW5dSwPdtqYnZcO-eELSaMdFjDqzh1Yl_VOIds846TJGEDVvefmJfnBETYDFoRhNcJ-uqu1OafN30sID-GBdvknsyCCNcrfACEDzCzJRemnL9yDIEO_2Qok34WSr_3N9RtoY3uAnK88uSuBdf8rk6Quh4f950U1aOChDvKBYdWShJWuvXmE5tF-F9tDYtYYgwn-asvCwjwy28kLll8SgM9y7o7gvqKSMKKQNjW38PMI-tjuENzV3rSJEIt4jbFhoHh-qOOXZ1ZM">
+</div>
+<div class="flex-1 text-center md:text-left z-10">
+<div class="inline-block px-3 py-1 rounded-full bg-secondary-container/10 border border-secondary-container/30 mb-3">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Premium Plan</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-1">Dominican Professional</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-4">SME Owner • ID: 402-XXXXXXX-X</p>
+<button class="px-6 py-3 rounded-lg bg-secondary-container text-on-secondary-container font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2 mx-auto md:mx-0 shadow-[0_10px_20px_rgba(5,242,151,0.2)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">edit</span>
+                        Edit Profile
+                    </button>
+</div>
+</div>
+<!-- Grid Layout for Settings -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Account Settings -->
+<div class="glass-panel rounded-xl p-md flex flex-col gap-4">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">manage_accounts</span>
+<h3 class="font-headline-md text-[20px] leading-[28px] text-on-surface">Account Configuration</h3>
+</div>
+<a class="flex justify-between items-center p-3 rounded-lg hover:bg-surface-variant/30 transition-colors group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">domain</span>
+<span class="font-body-md text-body-md text-on-surface">Business Details</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</a>
+<a class="flex justify-between items-center p-3 rounded-lg hover:bg-surface-variant/30 transition-colors group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">payments</span>
+<span class="font-body-md text-body-md text-on-surface">Payment Methods</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</a>
+<a class="flex justify-between items-center p-3 rounded-lg hover:bg-surface-variant/30 transition-colors group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">group</span>
+<span class="font-body-md text-body-md text-on-surface">Team Management</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</a>
+</div>
+<!-- Security & App Settings -->
+<div class="glass-panel rounded-xl p-md flex flex-col gap-4">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">security</span>
+<h3 class="font-headline-md text-[20px] leading-[28px] text-on-surface">Security &amp; Preferences</h3>
+</div>
+<!-- Biometrics Toggle -->
+<div class="flex justify-between items-center p-3 rounded-lg hover:bg-surface-variant/10 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">fingerprint</span>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Biometric Login</span>
+<span class="font-body-md text-[12px] leading-[16px] text-on-surface-variant">FaceID / TouchID</span>
+</div>
+</div>
+<!-- Custom Toggle -->
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10" id="biometrics" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-pointer" for="biometrics"></label>
+</div>
+</div>
+<!-- Theme Toggle -->
+<div class="flex justify-between items-center p-3 rounded-lg hover:bg-surface-variant/10 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" id="theme-icon">dark_mode</span>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Dark Mode</span>
+<span class="font-body-md text-[12px] leading-[16px] text-on-surface-variant">System default</span>
+</div>
+</div>
+<!-- Custom Toggle -->
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10" id="theme-toggle" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-pointer" for="theme-toggle"></label>
+</div>
+</div>
+<a class="flex justify-between items-center p-3 rounded-lg hover:bg-surface-variant/30 transition-colors group mt-auto" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors">support_agent</span>
+<span class="font-body-md text-body-md text-on-surface">Help &amp; Support</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Plan Benefits (Full Width) -->
+<div class="glass-panel rounded-xl p-md mt-md relative overflow-hidden">
+<!-- Gradient overlay for premium feel -->
+<div class="absolute inset-0 bg-gradient-to-r from-secondary-container/5 to-transparent pointer-events-none"></div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm relative z-10">Premium Plan Benefits</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md relative z-10">You are currently utilizing 85% of your NCF limit this month.</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-sm relative z-10">
+<div class="p-4 rounded-lg bg-surface-container border border-white/5">
+<span class="material-symbols-outlined text-secondary mb-2" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<div class="font-numeric-data text-numeric-data text-on-surface">Unlimited</div>
+<div class="font-body-md text-[12px] text-on-surface-variant">NCF Generations</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container border border-white/5">
+<span class="material-symbols-outlined text-tertiary mb-2" style="font-variation-settings: 'FILL' 1;">speed</span>
+<div class="font-numeric-data text-numeric-data text-on-surface">Priority</div>
+<div class="font-body-md text-[12px] text-on-surface-variant">API Access Rate</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container border border-white/5">
+<span class="material-symbols-outlined text-primary mb-2" style="font-variation-settings: 'FILL' 1;">auto_graph</span>
+<div class="font-numeric-data text-numeric-data text-on-surface">Advanced</div>
+<div class="font-body-md text-[12px] text-on-surface-variant">Tax Analytics</div>
+</div>
+</div>
+</div>
+<!-- Logout Action -->
+<div class="pt-lg flex justify-center pb-xl md:pb-0">
+<button class="px-6 py-3 rounded-lg border border-error text-error hover:bg-error/10 transition-colors font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined">logout</span>
+                    Sign Out
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full rounded-t-xl z-50 bg-surface-container/90 backdrop-blur-xl dark:bg-surface-container-low/90 shadow-[0_-10px_40px_rgba(0,0,0,0.4)] border-t border-white/5 fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-sm pb-8">
+<!-- Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="mt-1 text-[10px]">Home</span>
+</a>
+<!-- Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_balance_wallet</span>
+<span class="mt-1 text-[10px]">Budgets</span>
+</a>
+<!-- Inactive -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-primary transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="mt-1 text-[10px]">Taxes</span>
+</a>
+<!-- Active -->
+<a class="flex flex-col items-center justify-center text-secondary-container dark:text-secondary font-bold hover:text-primary transition-colors font-label-md text-label-md scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="mt-1 text-[10px]">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple logic to toggle dark mode class on HTML for demonstration
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const themeIcon = document.getElementById('theme-icon');
+
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                htmlElement.classList.add('dark');
+                themeIcon.textContent = 'dark_mode';
+            } else {
+                htmlElement.classList.remove('dark');
+                themeIcon.textContent = 'light_mode';
+            }
+        });
+    </script>
+</body></html>

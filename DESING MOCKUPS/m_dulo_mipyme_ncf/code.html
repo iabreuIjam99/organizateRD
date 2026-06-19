@@ -1,0 +1,423 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>OrganizateRD - Corporate Module</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface": "#131313",
+                    "tertiary": "#3cd7ff",
+                    "on-tertiary-container": "#008eab",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#00693f",
+                    "primary-fixed-dim": "#b9c7e4",
+                    "surface-dim": "#131313",
+                    "primary": "#b9c7e4",
+                    "surface-tint": "#b9c7e4",
+                    "on-secondary": "#00391f",
+                    "inverse-primary": "#515f78",
+                    "tertiary-container": "#001c24",
+                    "error": "#ffb4ab",
+                    "surface-container": "#201f1f",
+                    "tertiary-fixed": "#b4ebff",
+                    "on-secondary-fixed-variant": "#005230",
+                    "on-primary-fixed": "#0d1c32",
+                    "on-primary-container": "#74829d",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed-variant": "#004e5f",
+                    "tertiary-fixed-dim": "#3cd7ff",
+                    "on-error": "#690005",
+                    "outline": "#8f9097",
+                    "surface-container-low": "#1c1b1b",
+                    "secondary-fixed-dim": "#00e38d",
+                    "on-background": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#39475f",
+                    "primary-container": "#0a192f",
+                    "on-surface-variant": "#c5c6cd",
+                    "background": "#131313",
+                    "on-tertiary-fixed": "#001f27",
+                    "outline-variant": "#44474d",
+                    "surface-container-highest": "#353534",
+                    "secondary": "#c1ffd5",
+                    "on-surface": "#e5e2e1",
+                    "primary-fixed": "#d6e3ff",
+                    "secondary-fixed": "#55ffa9",
+                    "inverse-on-surface": "#313030",
+                    "on-primary": "#233148",
+                    "surface-bright": "#393939",
+                    "surface-variant": "#353534",
+                    "inverse-surface": "#e5e2e1",
+                    "secondary-container": "#05f297",
+                    "on-tertiary": "#003642",
+                    "on-secondary-fixed": "#002110"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "48px",
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "margin-desktop": "64px",
+                    "xl": "80px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "md": "24px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Poppins"],
+                    "headline-lg": ["Poppins"],
+                    "display-lg": ["Poppins"],
+                    "numeric-data": ["Inter"],
+                    "headline-md": ["Poppins"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "numeric-data": ["20px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(28, 27, 27, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+        
+        .animated-chart-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawLine 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        .glowing-shadow {
+            filter: drop-shadow(0 0 12px rgba(60, 215, 255, 0.4));
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased h-screen overflow-hidden flex">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col bg-surface dark:bg-surface-dim h-full w-80 rounded-r-xl bg-surface-container-low dark:bg-surface-container-lowest shadow-xl py-md px-sm z-40 relative">
+<div class="px-4 mb-8">
+<h1 class="font-display-lg text-display-lg text-primary dark:text-primary-fixed-dim tracking-tight">OrganizateRD</h1>
+</div>
+<!-- Header Profile -->
+<div class="flex items-center gap-4 px-4 mb-8">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="Profile Avatar" class="w-full h-full object-cover" data-alt="A highly detailed, professional headshot of a mature Dominican executive in a sharply tailored dark navy suit. The lighting is sophisticated and dramatic, casting subtle shadows to emphasize leadership and trust. The background is a deeply blurred, modern corporate office interior with cool glass and steel accents, perfectly aligning with a high-end financial platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0prs4-bCF6ICO07FASZmlmRH8NVjja9KmxXN1f3rLrJyaULzZZ6B1H4_7O5VX-z1FFjlp7V8vnjpDZW3C5wM8XIkgRBfeGl2TvKOX8CUkDfU2fWTNP67fBIJc_5fU5138-YC5G2MsWcLUemwcLfTdkdAf9fNvqAoZbPp1yRzTHB2tSa1otwYT7w2GpicLAVMGAy9fKUh50O8K7_TTyaDVLmQao7pTLe5I6VcX_tV4NrYDJN_ttqSm0R2BJ5SAmPM5I7hzeccxjek">
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface text-sm">Dominican Professional</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs">SME Owner</p>
+<span class="inline-block mt-1 px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary text-[10px] uppercase font-bold tracking-wider">Premium Account</span>
+</div>
+</div>
+<ul class="flex-1 space-y-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/10 rounded-lg mx-2 hover:bg-tertiary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/10 rounded-lg mx-2 hover:bg-tertiary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-body-md text-body-md">NCF History</span>
+</a>
+</li>
+<!-- Active State -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container dark:bg-primary-fixed-variant dark:text-on-primary-fixed rounded-lg mx-2 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-body-md text-body-md font-medium">Tax Calendar</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/10 rounded-lg mx-2 hover:bg-tertiary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/10 rounded-lg mx-2 hover:bg-tertiary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col h-full relative w-full overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-base bg-surface/80 backdrop-blur-md dark:bg-surface-dim/80 shadow-sm z-30 docked full-width top-0">
+<div class="flex items-center gap-4">
+<!-- Mobile Only Logo (Desktop has it in drawer) -->
+<h1 class="md:hidden font-headline-md text-headline-md font-bold text-on-surface dark:text-on-surface tracking-tight">OrganizateRD</h1>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity relative">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary-container rounded-full"></span>
+</button>
+<div class="md:hidden w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/30">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A highly detailed, professional headshot of a mature Dominican executive in a sharply tailored dark navy suit. The lighting is sophisticated and dramatic, casting subtle shadows to emphasize leadership and trust. The background is a deeply blurred, modern corporate office interior with cool glass and steel accents, perfectly aligning with a high-end financial platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSHtQcZpQsSuDvwp6ulHmWVeXci7GekSkj-JxU-wcitJcRXSPYTtYj8TfIcrF-2oRWrRxW_Ef0PJ0weyx5OSMQmNd5CL2j_CDDxmN_MR0y6EgvH0Drjw4tKyf70kghP6u-plEI1PS2xFCtPudlJwv6uv1pwZw0Qm2JopDokkCQhp1-RDU7sVRecLu--UPxBGwMXTK9FaDEZQoESJx4QLXWUtlOz83-7Z7gQMvcp6nSlISLa9RrSNhLNDNqVYdpj3OLRCTIz1O2E6U">
+</div>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop py-8 space-y-10 pb-32 md:pb-12 custom-scrollbar">
+<header class="mb-4">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Corporate Cash Flow</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Executive Summary &amp; NCF Management</p>
+</header>
+<!-- Executive Summary (Bento Grid) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+<!-- Income Card -->
+<div class="glass-card rounded-2xl p-6 relative overflow-hidden group hover:bg-surface-container-high/50 transition-colors duration-300">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-all"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Ingresos Mensuales</span>
+<span class="material-symbols-outlined text-secondary-container">trending_up</span>
+</div>
+<div class="font-numeric-data text-numeric-data text-3xl md:text-4xl text-on-surface font-bold tracking-tight">
+                        $2,450,000<span class="text-lg text-secondary-container">.00</span>
+</div>
+<div class="mt-4 flex items-center gap-2 text-sm">
+<span class="text-secondary-container flex items-center font-bold"><span class="material-symbols-outlined text-sm">arrow_upward</span> 12.5%</span>
+<span class="text-on-surface-variant">vs last month</span>
+</div>
+</div>
+<!-- Expenses Card -->
+<div class="glass-card rounded-2xl p-6 relative overflow-hidden group hover:bg-surface-container-high/50 transition-colors duration-300">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-error/10 rounded-full blur-3xl group-hover:bg-error/20 transition-all"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Gastos Operativos</span>
+<span class="material-symbols-outlined text-error">trending_down</span>
+</div>
+<div class="font-numeric-data text-numeric-data text-3xl md:text-4xl text-on-surface font-bold tracking-tight">
+                        $1,120,400<span class="text-lg text-error">.50</span>
+</div>
+<div class="mt-4 flex items-center gap-2 text-sm">
+<span class="text-error flex items-center font-bold"><span class="material-symbols-outlined text-sm">arrow_upward</span> 3.2%</span>
+<span class="text-on-surface-variant">vs last month</span>
+</div>
+</div>
+<!-- Net Liquidity Card -->
+<div class="glass-card rounded-2xl p-6 relative overflow-hidden group hover:bg-surface-container-high/50 transition-colors duration-300">
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-tertiary/10 rounded-full blur-3xl group-hover:bg-tertiary/20 transition-all"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Liquidez Neta</span>
+<span class="material-symbols-outlined text-tertiary">account_balance</span>
+</div>
+<div class="font-numeric-data text-numeric-data text-3xl md:text-4xl text-on-surface font-bold tracking-tight">
+                        $1,329,599<span class="text-lg text-tertiary">.50</span>
+</div>
+<div class="mt-4 w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 65%;"></div>
+</div>
+</div>
+</section>
+<!-- Predictive Cash Flow Chart -->
+<section class="glass-card rounded-2xl p-6 md:p-8 flex flex-col gap-6">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Proyección de Liquidez</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Tendencia lineal a 30 días</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary shadow-[0_0_8px_rgba(60,215,255,0.8)]"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Real</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 border-2 border-tertiary/50 rounded-full border-dashed"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Predictivo</span>
+</div>
+</div>
+</div>
+<!-- Stylized Chart Area -->
+<div class="w-full h-64 relative bg-surface-container-lowest/30 rounded-xl border border-white/5 p-4 flex items-end">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between px-4 py-6 pointer-events-none">
+<div class="w-full h-[1px] bg-white/5"></div>
+<div class="w-full h-[1px] bg-white/5"></div>
+<div class="w-full h-[1px] bg-white/5"></div>
+<div class="w-full h-[1px] bg-white/5"></div>
+</div>
+<!-- SVG Line Chart -->
+<svg class="w-full h-full overflow-visible preserve-3d" viewBox="0 0 1000 200">
+<defs>
+<linearGradient id="lineGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#3cd7ff" stop-opacity="0.2"></stop>
+<stop offset="50%" stop-color="#3cd7ff" stop-opacity="1"></stop>
+<stop offset="100%" stop-color="#c1ffd5" stop-opacity="1"></stop>
+</linearGradient>
+<linearGradient id="areaGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#3cd7ff" stop-opacity="0.15"></stop>
+<stop offset="100%" stop-color="#3cd7ff" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<!-- Area Fill -->
+<path d="M 0 180 Q 200 120 400 150 T 700 80 L 700 200 L 0 200 Z" fill="url(#areaGrad)"></path>
+<!-- Real Line -->
+<path class="animated-chart-line glowing-shadow" d="M 0 180 Q 200 120 400 150 T 700 80" fill="none" stroke="url(#lineGrad)" stroke-linecap="round" stroke-width="4"></path>
+<!-- Predictive Line (Dashed) -->
+<path class="glowing-shadow" d="M 700 80 Q 850 40 1000 20" fill="none" opacity="0.8" stroke="#c1ffd5" stroke-dasharray="8,6" stroke-linecap="round" stroke-width="3"></path>
+<!-- Data Points -->
+<circle cx="400" cy="150" fill="#131313" r="4" stroke="#3cd7ff" stroke-width="2"></circle>
+<circle class="glowing-shadow" cx="700" cy="80" fill="#131313" r="6" stroke="#c1ffd5" stroke-width="3"></circle>
+</svg>
+</div>
+</section>
+<!-- NCF Management -->
+<section>
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Gestión de NCF</h3>
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-secondary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                        Escanear NCF
+                    </button>
+</div>
+<div class="glass-card rounded-2xl overflow-hidden">
+<!-- List Header -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-high/50 border-b border-white/5 font-label-md text-label-md text-on-surface-variant uppercase text-xs">
+<div class="col-span-5 md:col-span-4">Comprobante</div>
+<div class="col-span-3 hidden md:block">Fecha</div>
+<div class="col-span-4 md:col-span-3 text-right">Monto (DOP)</div>
+<div class="col-span-3 md:col-span-2 text-right">Estado</div>
+</div>
+<!-- List Items -->
+<div class="flex flex-col divide-y divide-white/5">
+<!-- Item 1: Validated -->
+<div class="grid grid-cols-12 gap-4 px-6 py-5 items-center hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<div class="col-span-5 md:col-span-4 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-medium truncate">Crédito Fiscal</p>
+<p class="text-xs text-on-surface-variant truncate">B0100000345</p>
+</div>
+</div>
+<div class="col-span-3 hidden md:block font-body-md text-body-md text-on-surface-variant">
+                                12 Oct 2023
+                            </div>
+<div class="col-span-4 md:col-span-3 text-right font-numeric-data text-numeric-data text-on-surface">
+                                $45,200.00
+                            </div>
+<div class="col-span-3 md:col-span-2 flex justify-end">
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/10 border border-secondary-container/30 text-secondary-container font-label-md text-[11px] uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                                    Validado
+                                </span>
+</div>
+</div>
+<!-- Item 2: Pending -->
+<div class="grid grid-cols-12 gap-4 px-6 py-5 items-center hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<div class="col-span-5 md:col-span-4 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-outline/10 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">receipt</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-medium truncate">Consumo</p>
+<p class="text-xs text-on-surface-variant truncate">B0200001892</p>
+</div>
+</div>
+<div class="col-span-3 hidden md:block font-body-md text-body-md text-on-surface-variant">
+                                10 Oct 2023
+                            </div>
+<div class="col-span-4 md:col-span-3 text-right font-numeric-data text-numeric-data text-on-surface">
+                                $2,150.50
+                            </div>
+<div class="col-span-3 md:col-span-2 flex justify-end">
+<span class="px-2.5 py-1 rounded-full border border-outline-variant/50 text-on-surface-variant font-label-md text-[11px] uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">pending</span>
+                                    Pendiente
+                                </span>
+</div>
+</div>
+<!-- Item 3: Validated -->
+<div class="grid grid-cols-12 gap-4 px-6 py-5 items-center hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<div class="col-span-5 md:col-span-4 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-medium truncate">Crédito Fiscal</p>
+<p class="text-xs text-on-surface-variant truncate">B0100000346</p>
+</div>
+</div>
+<div class="col-span-3 hidden md:block font-body-md text-body-md text-on-surface-variant">
+                                08 Oct 2023
+                            </div>
+<div class="col-span-4 md:col-span-3 text-right font-numeric-data text-numeric-data text-on-surface">
+                                $128,000.00
+                            </div>
+<div class="col-span-3 md:col-span-2 flex justify-end">
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/10 border border-secondary-container/30 text-secondary-container font-label-md text-[11px] uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                                    Validado
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-sm pb-8 bg-surface-container/90 backdrop-blur-xl dark:bg-surface-container-low/90 shadow-[0_-10px_40px_rgba(0,0,0,0.4)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-1 text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md mt-1 text-[10px]">Budgets</span>
+</a>
+<!-- Active Nav Item -->
+<a class="flex flex-col items-center justify-center text-secondary-container dark:text-secondary font-bold scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-md text-label-md mt-1 text-[10px]">Taxes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md mt-1 text-[10px]">Profile</span>
+</a>
+</nav>
+</body></html>

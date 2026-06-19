@@ -1,0 +1,201 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Login - OrganizateRD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "surface-dim": "#131313",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "on-secondary-container": "#00693f",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "on-tertiary-container": "#008eab",
+                        "tertiary": "#3cd7ff",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#74829d",
+                        "tertiary-fixed": "#b4ebff",
+                        "on-secondary-fixed-variant": "#005230",
+                        "on-primary-fixed": "#0d1c32",
+                        "surface-container": "#201f1f",
+                        "on-secondary": "#00391f",
+                        "inverse-primary": "#515f78",
+                        "surface-tint": "#b9c7e4",
+                        "primary": "#b9c7e4",
+                        "tertiary-container": "#001c24",
+                        "on-primary-fixed-variant": "#39475f",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#00e38d",
+                        "on-background": "#e5e2e1",
+                        "on-surface-variant": "#c5c6cd",
+                        "background": "#131313",
+                        "primary-container": "#0a192f",
+                        "tertiary-fixed-dim": "#3cd7ff",
+                        "on-tertiary-fixed-variant": "#004e5f",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-low": "#1c1b1b",
+                        "outline": "#8f9097",
+                        "on-error": "#690005",
+                        "surface-variant": "#353534",
+                        "surface-bright": "#393939",
+                        "on-primary": "#233148",
+                        "secondary-container": "#05f297",
+                        "on-tertiary": "#003642",
+                        "on-secondary-fixed": "#002110",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary": "#c1ffd5",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "outline-variant": "#44474d",
+                        "on-tertiary-fixed": "#001f27",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed": "#55ffa9",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "margin-desktop": "64px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "numeric-data": ["Inter"],
+                        "headline-md": ["Poppins"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Poppins"],
+                        "headline-lg": ["Poppins"],
+                        "display-lg": ["Poppins"]
+                    },
+                    "fontSize": {
+                        "numeric-data": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-effect {
+            box-shadow: 0 0 40px -10px rgba(193, 255, 213, 0.15);
+        }
+        .input-dark {
+            background: rgba(0, 0, 0, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-primary-container text-on-surface font-body-md min-h-screen flex flex-col items-center justify-center relative overflow-hidden selection:bg-secondary selection:text-on-secondary">
+<!-- Background Gradients -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-secondary-container opacity-5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-tertiary-container opacity-10 blur-[100px]"></div>
+</div>
+<main class="w-full max-w-md px-margin-mobile md:px-0 z-10">
+<!-- Logo Area -->
+<div class="flex flex-col items-center mb-md text-center">
+<div class="w-16 h-16 rounded-xl bg-surface-container flex items-center justify-center mb-sm shadow-xl border border-white/5 glow-effect">
+<span class="material-symbols-outlined text-[32px] text-secondary">account_balance_wallet</span>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-secondary">OrganizateRD</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Bienvenido de nuevo</p>
+</div>
+<!-- Login Form Container -->
+<div class="glass-panel rounded-[16px] p-md md:p-lg shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<form class="flex flex-col gap-md">
+<!-- Email Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="email">Correo Electrónico</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline-variant text-[20px]">mail</span>
+<input class="input-dark w-full h-12 rounded-lg border border-white/10 pl-xl pr-sm text-on-surface font-body-md focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-all outline-none" id="email" placeholder="ejemplo@empresa.com" type="email">
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant" for="password">Contraseña</label>
+<a class="font-label-md text-label-md text-tertiary hover:text-tertiary-fixed transition-colors" href="#">¿Olvidaste tu contraseña?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline-variant text-[20px]">lock</span>
+<input class="input-dark w-full h-12 rounded-lg border border-white/10 pl-xl pr-sm text-on-surface font-body-md focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-all outline-none" id="password" placeholder="••••••••" type="password">
+<button class="absolute right-sm top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full h-12 mt-xs bg-secondary hover:bg-secondary-fixed text-on-secondary font-label-md text-label-md rounded-lg flex items-center justify-center gap-xs transition-all active:scale-[0.98]" type="submit">
+                    Iniciar Sesión
+                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="flex items-center gap-sm my-md">
+<div class="flex-1 h-px bg-white/5"></div>
+<span class="font-label-md text-label-md text-outline-variant">o continuar con</span>
+<div class="flex-1 h-px bg-white/5"></div>
+</div>
+<!-- Social Logins -->
+<div class="flex gap-sm">
+<button class="flex-1 h-12 rounded-lg border border-white/10 hover:bg-white/5 flex items-center justify-center gap-sm transition-colors text-on-surface font-label-md text-label-md" type="button">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYvB9rOwH4w_mLggcq4uMgjZq_2nWQArHO9DBDXbrgQ6OqJzinHlNx2Gw-GATJDn2haw5RChoshKKwerTGAnqG8y32t-8-BhRvfX_oWaCiV3y1ASjwk5HW1xvOug8kA81YcOMp2fStgseAGPa9n--Mdjc-FXVgQQbl743lgNns7H1MSr4JyUpVmutI3lN0z5520nVURYRJFSSHB5D6PaD6X4AcSZ85HPwI4lvc3bn-HCi1k4DjZCqlO--Dk9WnjI2aTl9q2pNQcso">
+                    Google
+                </button>
+<button class="flex-1 h-12 rounded-lg border border-white/10 hover:bg-white/5 flex items-center justify-center gap-sm transition-colors text-on-surface font-label-md text-label-md" type="button">
+<img alt="Apple" class="w-5 h-5 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC90h6C39bnyLDzWjabNsSEZIXgAZ__xZD_VJFb6gUgOsbgnxGHQrlQvCrWsfExu2tPGx58RtmtVbiH7v-Ta4o8mWm_4uvn2YlwDsPVso61UXJUzxFE80jV-V1eNWkxxmU3cxeDQ-0rdtS0rqpIDObDfFhVmOW5DBP5l2ayTlzWn3GAgWy9bbM7uV18EP-jUl-nuRH5GTQuOBdy5y4IEWgExNBfWWi5yB0DZjmDMs618mPgDFoB4B_TP_vkpkQMKkzZSL0uB3mPBD0">
+                    Apple
+                </button>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="mt-md text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                ¿No tienes una cuenta? 
+                <a class="text-secondary font-bold hover:text-secondary-fixed transition-colors" href="#">Registrarme</a>
+</p>
+</div>
+<!-- Trust Badge -->
+<div class="mt-lg flex items-center justify-center gap-xs text-outline opacity-60">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span class="font-label-md text-[12px] uppercase tracking-wider">Acceso Seguro &amp; Encriptado</span>
+</div>
+</main>
+</body></html>

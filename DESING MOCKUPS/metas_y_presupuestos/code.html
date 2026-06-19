@@ -1,0 +1,299 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>OrganizateRD - Presupuestos y Metas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "tertiary": "#3cd7ff",
+                        "on-tertiary-container": "#008eab",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#00693f",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "surface-dim": "#131313",
+                        "primary": "#b9c7e4",
+                        "surface-tint": "#b9c7e4",
+                        "on-secondary": "#00391f",
+                        "inverse-primary": "#515f78",
+                        "tertiary-container": "#001c24",
+                        "error": "#ffb4ab",
+                        "surface-container": "#201f1f",
+                        "tertiary-fixed": "#b4ebff",
+                        "on-secondary-fixed-variant": "#005230",
+                        "on-primary-fixed": "#0d1c32",
+                        "on-primary-container": "#74829d",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary-fixed-variant": "#004e5f",
+                        "tertiary-fixed-dim": "#3cd7ff",
+                        "on-error": "#690005",
+                        "outline": "#8f9097",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-fixed-dim": "#00e38d",
+                        "on-background": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#39475f",
+                        "primary-container": "#0a192f",
+                        "on-surface-variant": "#c5c6cd",
+                        "background": "#131313",
+                        "on-tertiary-fixed": "#001f27",
+                        "outline-variant": "#44474d",
+                        "surface-container-highest": "#353534",
+                        "secondary": "#c1ffd5",
+                        "on-surface": "#e5e2e1",
+                        "primary-fixed": "#d6e3ff",
+                        "secondary-fixed": "#55ffa9",
+                        "inverse-on-surface": "#313030",
+                        "on-primary": "#233148",
+                        "surface-bright": "#393939",
+                        "surface-variant": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-container": "#05f297",
+                        "on-tertiary": "#003642",
+                        "on-secondary-fixed": "#002110"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "margin-desktop": "64px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "md": "24px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Poppins"],
+                        "headline-lg": ["Poppins"],
+                        "display-lg": ["Poppins"],
+                        "numeric-data": ["Inter"],
+                        "headline-md": ["Poppins"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "numeric-data": ["20px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .progress-bar-bg {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .motivational-glow {
+            animation: pulse-glow 3s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 10px rgba(5, 242, 151, 0.2); }
+            100% { box-shadow: 0 0 20px rgba(5, 242, 151, 0.4); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-32 overflow-x-hidden selection:bg-tertiary/30">
+<!-- TopAppBar -->
+<header class="fixed w-full z-40 bg-surface/80 backdrop-blur-md dark:bg-surface-dim/80 shadow-sm border-b border-outline-variant/10">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-base">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/20 hover:opacity-80 transition-opacity cursor-pointer">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw-45UBOj1g7iSdkQfawz6jgEeP5DFB0qjAJ9DiydQy_wHAV8H_uOAR84ckgwCqCU2LQ3Xk7iJlrlF2K9Stmsxbdu5A4Q-J5xD1eMHM4GY-lhcaMJnnvj8AWbPjvitDgynZx486_iSMD0b9DUE0vYPzM7K_kALxFViMMLCspfcJ8rAqNkNLE8jC5k3qZTZqo7y4z9VbITsM2nxfgJPegidBLytsrtm-KBDwTzrXGRMFVsajEiPuFi25jwlltDZ96DrqrDZ9tlG9bI">
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface dark:text-on-surface tracking-tight">OrganizateRD</h1>
+</div>
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto space-y-md">
+<!-- Motivational Banner (Gamified) -->
+<section class="glass-card rounded-xl p-md border border-outline-variant/10 motivational-glow relative overflow-hidden flex items-center justify-between">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-secondary-container/10 rounded-full blur-3xl"></div>
+<div>
+<h2 class="font-headline-md text-headline-md text-secondary-container mb-1">¡Vas por buen camino, Maestro!</h2>
+<p class="text-on-surface-variant font-body-md">Has mantenido 2 de 3 presupuestos bajo control esta semana. Sigue así.</p>
+</div>
+<div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-secondary-container/20">
+<span class="material-symbols-outlined text-secondary-container text-4xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Active Budgets (Left Column) -->
+<div class="lg:col-span-8 space-y-sm">
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Presupuestos Activos</h3>
+<button class="text-tertiary text-label-md font-label-md hover:underline">Ver todos</button>
+</div>
+<!-- Budget Item: Comida (Green Zone) -->
+<article class="glass-card rounded-xl p-md">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">restaurant</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold">Comida y Supermercado</h4>
+<span class="text-label-md font-label-md text-on-surface-variant/80">Mensual</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-numeric-data text-numeric-data text-secondary-container">RD$ 8,500</span>
+<p class="text-label-md font-label-md text-on-surface-variant">de RD$ 25,000</p>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-3 progress-bar-bg rounded-full overflow-hidden mt-3">
+<div class="h-full bg-secondary-container rounded-full" style="width: 34%;"></div>
+</div>
+<p class="text-label-md font-label-md text-secondary-container mt-2">Saludable: 34% consumido</p>
+</article>
+<!-- Budget Item: Entretenimiento (Yellow Zone) -->
+<article class="glass-card rounded-xl p-md">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">movie</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold">Entretenimiento</h4>
+<span class="text-label-md font-label-md text-on-surface-variant/80">Mensual</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-numeric-data text-numeric-data text-[#f59e0b]">RD$ 7,200</span>
+<p class="text-label-md font-label-md text-on-surface-variant">de RD$ 10,000</p>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-3 progress-bar-bg rounded-full overflow-hidden mt-3">
+<div class="h-full bg-[#f59e0b] rounded-full" style="width: 72%;"></div>
+</div>
+<p class="text-label-md font-label-md text-[#f59e0b] mt-2">Precaución: 72% consumido</p>
+</article>
+<!-- Budget Item: Servicios (Red Zone) -->
+<article class="glass-card rounded-xl p-md">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">bolt</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold">Servicios Básicos</h4>
+<span class="text-label-md font-label-md text-on-surface-variant/80">Mensual</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-numeric-data text-numeric-data text-error">RD$ 11,500</span>
+<p class="text-label-md font-label-md text-on-surface-variant">de RD$ 12,000</p>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-3 progress-bar-bg rounded-full overflow-hidden mt-3">
+<div class="h-full bg-error rounded-full" style="width: 95%;"></div>
+</div>
+<p class="text-label-md font-label-md text-error mt-2">¡Alerta!: 95% consumido</p>
+</article>
+</div>
+<!-- Savings Goals (Right Column / Bento Grid) -->
+<div class="lg:col-span-4 space-y-sm">
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Metas de Ahorro</h3>
+<button class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface text-sm">add</span>
+</button>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-1 gap-sm">
+<!-- Goal 1: Fondo Emergencia -->
+<article class="glass-card rounded-xl p-md flex flex-col justify-between h-48 relative overflow-hidden group cursor-pointer hover:bg-surface-container-high/50 transition-colors">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-tertiary/5 rounded-full blur-xl group-hover:bg-tertiary/10 transition-colors"></div>
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">45%</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold leading-tight mb-1">Fondo de Emergencia</h4>
+<p class="font-numeric-data text-numeric-data text-tertiary text-sm">RD$ 45k <span class="text-on-surface-variant text-xs font-normal">/ 100k</span></p>
+</div>
+</article>
+<!-- Goal 2: Vacaciones -->
+<article class="glass-card rounded-xl p-md flex flex-col justify-between h-48 relative overflow-hidden group cursor-pointer hover:bg-surface-container-high/50 transition-colors">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-secondary-container/5 rounded-full blur-xl group-hover:bg-secondary-container/10 transition-colors"></div>
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-secondary-container/10 flex items-center justify-center border border-secondary-container/20">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">forest</span> <!-- Fallback for palm tree -->
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">12%</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold leading-tight mb-1">Vacaciones Punta Cana</h4>
+<p class="font-numeric-data text-numeric-data text-secondary-container text-sm">RD$ 12k <span class="text-on-surface-variant text-xs font-normal">/ 100k</span></p>
+</div>
+</article>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only based on platform rules, but requested to show active state on "Budgets") -->
+<nav class="md:hidden fixed bottom-0 w-full rounded-t-xl z-50 bg-surface-container/90 backdrop-blur-xl dark:bg-surface-container-low/90 border-t border-white/5 shadow-[0_-10px_40px_rgba(0,0,0,0.4)]">
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-sm pb-8">
+<button class="flex flex-col items-center justify-center text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-label-md text-label-md text-xs">Home</span>
+</button>
+<!-- Active Nav Item -->
+<button class="flex flex-col items-center justify-center text-secondary-container dark:text-secondary font-bold hover:text-primary transition-colors scale-110 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-md text-label-md text-xs">Budgets</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="font-label-md text-label-md text-xs">Taxes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-md text-label-md text-xs">Profile</span>
+</button>
+</div>
+</nav>
+</body></html>
