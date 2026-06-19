@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
+import "package:go_router/go_router.dart";
 import "../../../../core/theme/app_theme.dart";
 import "../bloc/auth_bloc.dart";
 import "../bloc/auth_event.dart";
@@ -296,6 +297,27 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ],
+          ),
+          const SizedBox(height: 24),
+          Center(
+            child: TextButton(
+              onPressed: () => context.go("/register"),
+              child: Text.rich(
+                TextSpan(
+                  style: const TextStyle(color: AppTheme.onSurfaceVariant),
+                  children: [
+                    const TextSpan(text: "¿No tienes una cuenta? "),
+                    TextSpan(
+                      text: "Registrarme",
+                      style: const TextStyle(
+                        color: AppTheme.secondary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
         ],
       ),
