@@ -1,0 +1,48 @@
+# .github/workflows/ai-review.yml
+name: AI Security Review
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ai-analysis:
+    name: AI Security Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Run AI Security Analysis
+        run: node scripts/ai-security-analysis.js
+        
+      - name: Comment on PR
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let analysis = 'Análisis no disponible';
+            
+            try {
+              if (fs.existsSync('analysis.txt')) {
+                analysis = fs.readFileSync('analysis.txt', 'utf8');
+              }
+            } catch (e) {
+              analysis = 'Error reading analysis file';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 🤖 Análisis de Seguridad IA\n\n${analysis}\n\n---\n*Este análisis es automatizado. Por favor, revisa manualmente los cambios críticos.*`
+            });

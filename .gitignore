@@ -1,6 +1,8 @@
 node_modules/
 dist/
 .env
+.env.local
+.env.*.local
 *.log
 .dart_tool/
 build/
@@ -11,6 +13,13 @@ build/
 .DS_Store
 Thumbs.db
 
+# Security
+*.key
+*.pem
+*.p12
+secrets/
+credentials/
+
 # AI tooling (keep private)
 AGENTS.md
 CLAUDE.md
@@ -19,4 +28,6 @@ GEMINI.md
 .cursor/
 .windsurf/
 copilot/
-docs/
+
+# Keep docs for superpowers
+!docs/
