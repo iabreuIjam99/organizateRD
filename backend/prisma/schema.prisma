@@ -22,6 +22,17 @@ enum TransactionType {
   EXPENSE
 }
 
+enum BudgetType {
+  PERSONAL
+  PROJECT
+}
+
+enum GoalStatus {
+  ACTIVE
+  COMPLETED
+  PAUSED
+}
+
 model User {
   id           String    @id @default(uuid())
   email        String    @unique
@@ -34,20 +45,23 @@ model User {
 
   budgets      Budget[]
   transactions Transaction[]
+  goals        Goal[]
 
   @@map("users")
 }
 
 model Budget {
-  id        String       @id @default(uuid())
-  userId    String       @map("user_id")
-  amount    Float
-  category  String
-  period    BudgetPeriod
-  createdAt DateTime     @default(now()) @map("created_at")
-  updatedAt DateTime     @updatedAt @map("updated_at")
+  id         String      @id @default(uuid())
+  userId     String      @map("user_id")
+  amount     Float
+  spent      Float       @default(0)
+  category   String
+  period     BudgetPeriod
+  budgetType BudgetType  @default(PERSONAL) @map("budget_type")
+  createdAt  DateTime    @default(now()) @map("created_at")
+  updatedAt  DateTime    @updatedAt @map("updated_at")
 
-  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("budgets")
 }
@@ -67,4 +81,20 @@ model Transaction {
   user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("transactions")
+}
+
+model Goal {
+  id          String     @id @default(uuid())
+  userId      String     @map("user_id")
+  name        String
+  targetAmount Float     @map("target_amount")
+  currentAmount Float    @default(0) @map("current_amount")
+  icon        String     @default("savings")
+  status      GoalStatus @default(ACTIVE)
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("goals")
 }
